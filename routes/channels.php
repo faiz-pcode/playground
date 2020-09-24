@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+Broadcast::channel('kitchen-01', function ($user, $id) {
+    return true;
+});
+
+Broadcast::channel('kitchen-02', function ($user, $id) {
+    return true;
+});
+
+Broadcast::channel('bar', function ($user, $id) {
+    return true;
+});

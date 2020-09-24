@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ItemController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('playground-home');
+    return view('welcome');
 });
+
+Route::get('/websocket', function () {
+    return view('websocket.home');
+});
+
+Route::get('/websocket/trigger', function () {
+    return view('websocket.trigger');
+})->name('trigger');
+
+Route::post('/websocket/trigger', [ItemController::class, 'store']);

@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Item;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -10,20 +11,18 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class SendToKitchen implements ShouldBroadcast
+class SendToBarEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
-    public $data = ['asas'];
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Item $item)
     {
-        //
+        $this->item = $item;
     }
 
     /**
@@ -33,7 +32,7 @@ class SendToKitchen implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('kitchen-01');
+        return new Channel('bar');
     }
 
     /**
@@ -43,16 +42,6 @@ class SendToKitchen implements ShouldBroadcast
      */
     public function broadcastAs()
     {
-        return 'TestEvent';
-    }
-
-    /**
-     * The event's broadcast content
-     * 
-     * @return array
-     */
-    public function broadcastWith()
-    {
-        return ['title' => 'This is a notification'];
+        return 'item-created';
     }
 }
