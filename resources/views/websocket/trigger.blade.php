@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class="container">
-            <h1>Laravel Broadcast Trigger to Websocket</h1>
+            <h1 class="text-center">Laravel Broadcast Trigger to Websocket</h1>
             
             <div class="col-12 border-top border-info my-4">
                 <form action="/websocket/trigger" method="post">
@@ -22,7 +22,7 @@
                         <label for="q1">Quantity:</label>
                         <input type="number" name="quantity" id="q1" value="1"><br>
                         <input type="hidden" name="where_to" value="kitchen-01">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </form>
             </div>
@@ -37,7 +37,7 @@
                         <label for="q2">Quantity:</label>
                         <input type="number" name="quantity" id="q2" value="1"><br>
                         <input type="hidden" name="where_to" value="kitchen-02">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </form>
             </div>
@@ -52,7 +52,7 @@
                         <label for="q3">Quantity:</label>
                         <input type="number" name="quantity" id="q3" value="1"><br>
                         <input type="hidden" name="where_to" value="bar">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </form>
             </div>
