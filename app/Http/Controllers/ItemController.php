@@ -39,14 +39,7 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //$item = Item::create($request->only('name', 'quantity', 'where_to'));
-        $now = Carbon::now();
-        $item = new Item();
-        $item->name = $request->name;
-        $item->quantity = $request->quantity;
-        $item->where_to = $request->where_to;
-        $item->created_at = $now;
-        $item->updated_at = $now;
+        $item = Item::create($request->only('name', 'quantity', 'where_to'));
         if ($item->where_to == 'kitchen-01') {
             broadcast(new SendToKitchenEvent($item));
         } else if ($item->where_to == 'kitchen-02') {
@@ -54,8 +47,7 @@ class ItemController extends Controller
         } else if ($item->where_to == 'bar') {
             broadcast(new SendToBarEvent($item));
         }
-        dd($item);
-        //return redirect()->route('trigger');
+        return redirect()->route('trigger');
     }
 
     /**

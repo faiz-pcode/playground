@@ -7,14 +7,15 @@ use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class SendToBarEvent implements ShouldBroadcast
+class SendToBarEvent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $item;
     /**
      * Create a new event instance.
      *
@@ -43,5 +44,20 @@ class SendToBarEvent implements ShouldBroadcast
     public function broadcastAs()
     {
         return 'item-created';
+    }
+
+    /**
+     * Specifically broadcasts the necessary array keys
+     *
+     * @return array
+     */
+    public function broadcastWith()
+    {
+        return [
+            'item' => [
+                'name' => $this->item->name,
+                'quantity' => $this->item->quantity,
+            ]
+        ];
     }
 }

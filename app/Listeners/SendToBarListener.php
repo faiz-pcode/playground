@@ -29,6 +29,6 @@ class SendToBarListener
     public function handle(SendToBarEvent $event)
     {
         $now = Carbon::now();
-        Log::info("[{$now}] Item {$event->item->name} sent to bar");
+        Log::info("SendToBarListener: Sent '{$event->item->name}' with quantity [{$event->item->quantity}] to {$event->item->where_to}");
     }
 }

@@ -29,6 +29,6 @@ class SendToKitchen2Listener
     public function handle(SendToKitchen2Event $event)
     {
         $now = Carbon::now();
-        Log::info("[{$now}] Item {$event->item->name} sent to kitchen-02");
+        Log::info("SendToKitchen2Listener: Sent '{$event->item->name}' with quantity [{$event->item->quantity}] to {$event->item->where_to}");
     }
 }

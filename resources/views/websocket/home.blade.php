@@ -40,22 +40,22 @@
         window.Echo.channel('kitchen-01')
          .listen('.item-created', (data) => {
             console.log(`laravel_broadcast-kitchen_01: ${data}`);
-            //i++;
-            //$("#kitchen").append('<div class="alert alert-success">'+i+'.'+data.title+'</div>');
+            i++;
+            $("#kitchen").append(`<div class="alert alert-success">${i}. ${data.item.name} - x${data.item.quantity}</div>`);
         });
         var j = 0;
         window.Echo.channel('kitchen-02')
          .listen('.item-created', (data) => {
             console.log(`laravel_broadcast-kitchen_02: ${data}`);
             j++;
-            $("#kitchen2").append('<div class="alert alert-success">'+j+'.'+data.title+'</div>');
+            $("#kitchen2").append(`<div class="alert alert-success">${j}. ${data.item.name} - x${data.item.quantity}</div>`);
         });
         var k = 0;
         window.Echo.channel('bar')
          .listen('.item-created', (data) => {
             console.log(`laravel_broadcast-bar: ${data}`);
             k++;
-            $("#bar").append('<div class="alert alert-success">'+k+'.'+data.title+'</div>');
+            $("#bar").append(`<div class="alert alert-success">${k}. ${data.item.name} - x${data.item.quantity}</div>`);
         });
     </script>
 </html>
