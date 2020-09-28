@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +25,12 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::get('/websocket', function () {
-        return view('websocket.home');
-    });
+    Route::get('/websocket', [ItemController::class, 'homeIndex']);
     
-    Route::get('/websocket/trigger', function () {
-        return view('websocket.trigger');
-    })->name('trigger');
+    Route::get('/websocket/trigger', [ItemController::class, 'triggerIndex'])->name('trigger');
+
+    Route::get('/message/index', [MessageController::class, 'index']);
+    Route::get('/message/send', [MessageController::class, 'send']);
     
     Route::post('/websocket/trigger', [ItemController::class, 'store']);
 });
