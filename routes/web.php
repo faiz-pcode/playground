@@ -19,16 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/websocket', function () {
-    return view('websocket.home');
-});
-
-Route::get('/websocket/trigger', function () {
-    return view('websocket.trigger');
-})->name('trigger');
-
-Route::post('/websocket/trigger', [ItemController::class, 'store']);
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/websocket', function () {
+        return view('websocket.home');
+    });
+    
+    Route::get('/websocket/trigger', function () {
+        return view('websocket.trigger');
+    })->name('trigger');
+    
+    Route::post('/websocket/trigger', [ItemController::class, 'store']);
+});
