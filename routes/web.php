@@ -28,3 +28,7 @@ Route::get('/websocket/trigger', function () {
 })->name('trigger');
 
 Route::post('/websocket/trigger', [ItemController::class, 'store']);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
