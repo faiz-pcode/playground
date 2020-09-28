@@ -33,7 +33,7 @@ class SendToBarEvent implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new Channel('bar');
+        return new PrivateChannel('bar');
     }
 
     /**

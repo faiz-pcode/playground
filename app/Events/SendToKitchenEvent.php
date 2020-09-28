@@ -33,7 +33,7 @@ class SendToKitchenEvent implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new Channel('kitchen-01');
+        return new PrivateChannel('kitchen-01');
     }
 
     /**

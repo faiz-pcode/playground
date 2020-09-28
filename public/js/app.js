@@ -6384,7 +6384,8 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   key: "dGdIU0VxNytabGo2M0s1ZjJlTTFlKzVKRElXRThIckVsQXRrRmhKM0Rpaz0=",
   cluster: "lw",
   wsHost: "ws.playground.test",
-  forceTLS: false
+  forceTLS: false,
+  logToConsole: true
 });
 
 /***/ }),

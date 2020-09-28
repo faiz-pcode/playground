@@ -8,6 +8,7 @@ use App\Events\SendToKitchen2Event;
 use App\Events\SendToBarEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
@@ -16,9 +17,20 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function homeIndex()
     {
-        //
+        $user_id = Auth::user()->id;
+        $data = array('user_id' => $user_id);
+
+        return view('websocket.home', $data);
+    }
+
+    public function triggerIndex()
+    {
+        $user_id = Auth::user()->id;
+        $data = array('user_id' => $user_id);
+
+        return view('websocket.trigger', $data);
     }
 
     /**
